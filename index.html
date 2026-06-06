@@ -284,36 +284,81 @@
             margin: 0 auto;
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .logo {
-                font-size: 2rem;
-            }
-            
-            .hero {
-                padding: 22px 15px;
-            }
-            
-            .hero h2 {
-                font-size: 1.4rem;
+        /* Responsive Table - Stacks nicely on phones */
+        @media (max-width: 640px) {
+            .table-container {
+                overflow-x: visible;
+                box-shadow: none;
             }
             
             table {
-                font-size: 0.9rem;
+                display: block;
+                min-width: auto;
             }
             
-            th, td {
-                padding: 9px 6px;
+            thead {
+                display: none;
             }
             
-            .bike-img {
-                width: 68px;
-                height: 52px;
+            tbody tr {
+                display: block;
+                margin-bottom: 1.25rem;
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                padding: 12px;
+                background: white;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+            
+            tbody td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 0;
+                border: none;
+                font-size: 0.95rem;
+            }
+            
+            tbody td:before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #0A4D68;
+                min-width: 90px;
+                margin-right: 12px;
+            }
+            
+            /* Make image + model stand out at the top of each card */
+            tbody td:first-child {
+                display: block;
+                text-align: center;
+                margin-bottom: 8px;
+            }
+            
+            tbody td:first-child img {
+                width: 130px;
+                height: 95px;
+                border-radius: 10px;
+                border: 3px solid #0A4D68;
+            }
+            
+            tbody td:nth-child(2) {
+                display: block;
+                text-align: center;
+                font-size: 1.15rem;
+                font-weight: 700;
+                color: #0A4D68;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #f3f4f6;
+            }
+            
+            tbody td:nth-child(2):before {
+                display: none;
+            }
+            
+            /* Hide the label for the model row */
+            tbody td:nth-child(2) {
+                padding-top: 0;
             }
         }
         
@@ -365,42 +410,42 @@
         <div class="deals-grid">
             <!-- Deal 1 -->
             <div class="deal-card">
-                <h4>Lectric XP4</h4>
+                <h4>Lectric XP 3.0</h4>
                 <div class="discount">$100 off + free accessories</div>
-                <div><span class="code">XP4SAVE</span></div>
+                <div><span class="code">XP3SAVE</span></div>
                 <small>Use at lectricebikes.com • Great for beginners</small>
             </div>
             
             <!-- Deal 2 -->
             <div class="deal-card">
-                <h4>Ride1Up Roadster V3</h4>
-                <div class="discount">Free shipping + $75 off</div>
-                <div><span class="code">ROAD75</span></div>
-                <small>Use at ride1up.com • Lightweight favorite</small>
-            </div>
-            
-            <!-- Deal 3 -->
-            <div class="deal-card">
-                <h4>Aventon Level 3</h4>
+                <h4>Aventon Level.2</h4>
                 <div class="discount">10% off + free rack</div>
                 <div><span class="code">AVENTON10</span></div>
                 <small>Use at aventon.com • Excellent daily rider</small>
             </div>
             
+            <!-- Deal 3 -->
+            <div class="deal-card">
+                <h4>RadRover 6 Plus</h4>
+                <div class="discount">Free shipping + $75 off</div>
+                <div><span class="code">RAD75</span></div>
+                <small>Use at radpowerbikes.com • Fat tire favorite</small>
+            </div>
+            
             <!-- Deal 4 -->
             <div class="deal-card">
-                <h4>E Ride Pro SS 3.0</h4>
-                <div class="discount">$200 off + free helmet</div>
-                <div><span class="code">ERIDE200</span></div>
-                <small>Check revrides.com or eridepro dealers</small>
+                <h4>Surron Ultra Bee</h4>
+                <div class="discount">$300 off + free helmet</div>
+                <div><span class="code">SURRON300</span></div>
+                <small>Check authorized dealers • High performance</small>
             </div>
             
             <!-- Deal 5 -->
             <div class="deal-card">
-                <h4>Talaria Sting MX5</h4>
-                <div class="discount">Free shipping bundle</div>
-                <div><span class="code">TALARIAFUN</span></div>
-                <small>Available at many e-moto shops</small>
+                <h4>E Ride Pro SS</h4>
+                <div class="discount">$200 off bundle</div>
+                <div><span class="code">ERIDE200</span></div>
+                <small>Available at revrides.com and other emoto shops</small>
             </div>
         </div>
 
@@ -439,134 +484,134 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Row 1: Lectric XP4 -->
+                    <!-- Row 1: Lectric XP 3.0 -->
                     <tr data-type="ebike">
-                        <td><img src="https://picsum.photos/id/1015/82/62" alt="Lectric XP4 folding e-bike" class="bike-img"></td>
-                        <td><strong>Lectric XP4</strong><br><span class="note">2025</span></td>
+                        <td><img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=400&amp;h=280&amp;fit=crop" alt="Lectric XP 3.0 folding e-bike" class="bike-img"></td>
+                        <td><strong>Lectric XP 3.0</strong><br><span class="note">2025</span></td>
                         <td><span class="badge badge-ebike">E-Bike</span></td>
-                        <td class="price">$999</td>
-                        <td>500W Hub<br><span class="note">(750W peak)</span></td>
-                        <td>65 miles</td>
-                        <td>61 lbs</td>
-                        <td>28 mph</td>
-                        <td>Commuting, travel, beginners</td>
+                        <td data-label="Price" class="price">$999</td>
+                        <td data-label="Motor">500W Hub<br><span class="note">(750W peak)</span></td>
+                        <td data-label="Range">65 miles</td>
+                        <td data-label="Weight">65 lbs</td>
+                        <td data-label="Top Speed">28 mph</td>
+                        <td data-label="Best For">Commuting, travel, beginners</td>
                     </tr>
                     
-                    <!-- Row 2: Aventon Level 3 -->
+                    <!-- Row 2: Aventon Level.2 -->
                     <tr data-type="ebike">
-                        <td><img src="https://picsum.photos/id/160/82/62" alt="Aventon Level 3 e-bike" class="bike-img"></td>
-                        <td><strong>Aventon Level 3</strong><br><span class="note">2025</span></td>
+                        <td><img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=400&amp;h=280&amp;fit=crop" alt="Aventon Level.2 e-bike" class="bike-img"></td>
+                        <td><strong>Aventon Level.2</strong><br><span class="note">2025</span></td>
                         <td><span class="badge badge-ebike">E-Bike</span></td>
-                        <td class="price">$1,899</td>
-                        <td>500W Hub</td>
-                        <td>45 miles</td>
-                        <td>67 lbs</td>
-                        <td>28 mph</td>
-                        <td>Daily commuting, city riding</td>
+                        <td data-label="Price" class="price">$1,699</td>
+                        <td data-label="Motor">500W Hub</td>
+                        <td data-label="Range">40 miles</td>
+                        <td data-label="Weight">65 lbs</td>
+                        <td data-label="Top Speed">28 mph</td>
+                        <td data-label="Best For">Everyday commuting</td>
                     </tr>
                     
-                    <!-- Row 3: RadRover -->
+                    <!-- Row 3: RadRover 6 Plus -->
                     <tr data-type="ebike">
-                        <td><img src="https://picsum.photos/id/201/82/62" alt="Rad Power RadRover fat tire e-bike" class="bike-img"></td>
-                        <td><strong>Rad Power RadRover 6</strong><br><span class="note">2025</span></td>
+                        <td><img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=400&amp;h=280&amp;fit=crop" alt="Rad Power RadRover 6 Plus fat tire e-bike" class="bike-img"></td>
+                        <td><strong>RadRover 6 Plus</strong><br><span class="note">2025</span></td>
                         <td><span class="badge badge-ebike">E-Bike</span></td>
-                        <td class="price">$1,699</td>
-                        <td>750W Hub</td>
-                        <td>45 miles</td>
-                        <td>73 lbs</td>
-                        <td>25 mph</td>
-                        <td>Trails, snow, sand, adventure</td>
+                        <td data-label="Price" class="price">$1,699</td>
+                        <td data-label="Motor">750W Hub</td>
+                        <td data-label="Range">45 miles</td>
+                        <td data-label="Weight">73 lbs</td>
+                        <td data-label="Top Speed">25 mph</td>
+                        <td data-label="Best For">Trails, snow, sand, adventure</td>
                     </tr>
                     
-                    <!-- Row 4: Ride1Up Roadster -->
+                    <!-- Row 4: Ride1Up Roadster v3 -->
                     <tr data-type="ebike">
-                        <td><img src="https://picsum.photos/id/29/82/62" alt="Ride1Up Roadster lightweight e-bike" class="bike-img"></td>
-                        <td><strong>Ride1Up Roadster V3</strong><br><span class="note">2025</span></td>
+                        <td><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&amp;h=280&amp;fit=crop" alt="Ride1Up Roadster v3 lightweight e-bike" class="bike-img"></td>
+                        <td><strong>Ride1Up Roadster v3</strong><br><span class="note">2025</span></td>
                         <td><span class="badge badge-ebike">E-Bike</span></td>
-                        <td class="price">$1,295</td>
-                        <td>500W Hub</td>
-                        <td>40 miles</td>
-                        <td>44 lbs</td>
-                        <td>28 mph</td>
-                        <td>Lightweight commuting &amp; fitness</td>
+                        <td data-label="Price" class="price">$1,295</td>
+                        <td data-label="Motor">500W Hub</td>
+                        <td data-label="Range">40 miles</td>
+                        <td data-label="Weight">44 lbs</td>
+                        <td data-label="Top Speed">28 mph</td>
+                        <td data-label="Best For">Lightweight commuting &amp; fitness</td>
                     </tr>
                     
-                    <!-- Row 5: Velotric Discover -->
-                    <tr data-type="ebike">
-                        <td><img src="https://picsum.photos/id/251/82/62" alt="Velotric Discover commuter e-bike" class="bike-img"></td>
-                        <td><strong>Velotric Discover 2</strong><br><span class="note">2025</span></td>
-                        <td><span class="badge badge-ebike">E-Bike</span></td>
-                        <td class="price">$1,799</td>
-                        <td>750W Hub</td>
-                        <td>55 miles</td>
-                        <td>63 lbs</td>
-                        <td>28 mph</td>
-                        <td>Errands &amp; comfortable commuting</td>
-                    </tr>
-                    
-                    <!-- Row 6: Aventon Aventure -->
-                    <tr data-type="ebike">
-                        <td><img src="https://picsum.photos/id/1005/82/62" alt="Aventon Aventure fat tire adventure e-bike" class="bike-img"></td>
-                        <td><strong>Aventon Aventure 3</strong><br><span class="note">2025</span></td>
-                        <td><span class="badge badge-ebike">E-Bike</span></td>
-                        <td class="price">$1,999</td>
-                        <td>750W Hub</td>
-                        <td>45 miles</td>
-                        <td>78 lbs</td>
-                        <td>28 mph</td>
-                        <td>Gravel, trails &amp; all-terrain</td>
-                    </tr>
-                    
-                    <!-- Row 7: Lectric Xpedition (Cargo) -->
-                    <tr data-type="ebike">
-                        <td><img src="https://picsum.photos/id/1036/82/62" alt="Lectric Xpedition cargo e-bike" class="bike-img"></td>
-                        <td><strong>Lectric Xpedition 2</strong><br><span class="note">2025</span></td>
-                        <td><span class="badge badge-ebike">E-Bike</span></td>
-                        <td class="price">$1,999</td>
-                        <td>750W Hub</td>
-                        <td>80 miles</td>
-                        <td>85 lbs</td>
-                        <td>28 mph</td>
-                        <td>Cargo, kids, groceries, family</td>
-                    </tr>
-                    
-                    <!-- Row 8: Surron Light Bee -->
+                    <!-- Row 5: Surron Ultra Bee -->
                     <tr data-type="edirt">
-                        <td><img src="https://picsum.photos/id/1040/82/62" alt="Surron Light Bee X electric dirt bike" class="bike-img"></td>
-                        <td><strong>Surron Light Bee X</strong><br><span class="note">2025</span></td>
+                        <td><img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=400&amp;h=280&amp;fit=crop" alt="Surron Ultra Bee electric dirt bike" class="bike-img"></td>
+                        <td><strong>Surron Ultra Bee</strong><br><span class="note">2025</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
-                        <td class="price">$4,299</td>
-                        <td>High-power<br><span class="note">(~5kW)</span></td>
-                        <td>50 miles</td>
-                        <td>120 lbs</td>
-                        <td>45 mph*</td>
-                        <td>Trail riding &amp; off-road fun</td>
+                        <td data-label="Price" class="price">$5,499</td>
+                        <td data-label="Motor">High-power<br><span class="note">(~10kW)</span></td>
+                        <td data-label="Range">50 miles</td>
+                        <td data-label="Weight">135 lbs</td>
+                        <td data-label="Top Speed">50 mph*</td>
+                        <td data-label="Best For">Off-road trails &amp; power</td>
                     </tr>
                     
-                    <!-- Row 9: Talaria Sting -->
+                    <!-- Row 6: Talaria Sting R -->
                     <tr data-type="edirt">
-                        <td><img src="https://picsum.photos/id/106/82/62" alt="Talaria Sting MX5 electric dirt bike" class="bike-img"></td>
-                        <td><strong>Talaria Sting MX5</strong><br><span class="note">2025</span></td>
+                        <td><img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=400&amp;h=280&amp;fit=crop" alt="Talaria Sting R electric dirt bike" class="bike-img"></td>
+                        <td><strong>Talaria Sting R</strong><br><span class="note">2025</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
-                        <td class="price">$3,799</td>
-                        <td>72V High-Torque</td>
-                        <td>45 miles</td>
-                        <td>125 lbs</td>
-                        <td>50 mph*</td>
-                        <td>MX trails, enduro, jumps</td>
+                        <td data-label="Price" class="price">$3,899</td>
+                        <td data-label="Motor">72V High-Torque</td>
+                        <td data-label="Range">45 miles</td>
+                        <td data-label="Weight">125 lbs</td>
+                        <td data-label="Top Speed">50 mph*</td>
+                        <td data-label="Best For">Trail riding &amp; MX</td>
                     </tr>
                     
-                    <!-- Row 10: E Ride Pro -->
+                    <!-- Row 7: E Ride Pro SS -->
                     <tr data-type="edirt">
-                        <td><img src="https://picsum.photos/id/30/82/62" alt="E Ride Pro SS 3.0 electric dirt bike" class="bike-img"></td>
-                        <td><strong>E Ride Pro SS 3.0</strong><br><span class="note">2025</span></td>
+                        <td><img src="https://images.unsplash.com/photo-1558981359-219d6364c9c8?w=400&amp;h=280&amp;fit=crop" alt="E Ride Pro SS electric dirt bike" class="bike-img"></td>
+                        <td><strong>E Ride Pro SS</strong><br><span class="note">2025</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
-                        <td class="price">$3,199</td>
-                        <td>72V 15kW Peak</td>
-                        <td>60 miles</td>
-                        <td>165 lbs</td>
-                        <td>55 mph*</td>
-                        <td>Powerful dirt biking &amp; versatility</td>
+                        <td data-label="Price" class="price">$3,199</td>
+                        <td data-label="Motor">72V 15kW Peak</td>
+                        <td data-label="Range">55 miles</td>
+                        <td data-label="Weight">160 lbs</td>
+                        <td data-label="Top Speed">55 mph*</td>
+                        <td data-label="Best For">Versatile dirt biking</td>
+                    </tr>
+                    
+                    <!-- Row 8: Segway X260 -->
+                    <tr data-type="edirt">
+                        <td><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&amp;h=280&amp;fit=crop" alt="Segway X260 electric dirt bike" class="bike-img"></td>
+                        <td><strong>Segway X260</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
+                        <td data-label="Price" class="price">$4,299</td>
+                        <td data-label="Motor">High Power Electric</td>
+                        <td data-label="Range">40 miles</td>
+                        <td data-label="Weight">140 lbs</td>
+                        <td data-label="Top Speed">45 mph*</td>
+                        <td data-label="Best For">Performance trails</td>
+                    </tr>
+                    
+                    <!-- Row 9: Aventon Aventure.2 -->
+                    <tr data-type="ebike">
+                        <td><img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=400&amp;h=280&amp;fit=crop" alt="Aventon Aventure.2 fat tire adventure e-bike" class="bike-img"></td>
+                        <td><strong>Aventon Aventure.2</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-ebike">E-Bike</span></td>
+                        <td data-label="Price" class="price">$1,999</td>
+                        <td data-label="Motor">750W Hub</td>
+                        <td data-label="Range">45 miles</td>
+                        <td data-label="Weight">75 lbs</td>
+                        <td data-label="Top Speed">28 mph</td>
+                        <td data-label="Best For">Gravel, trails &amp; all-terrain</td>
+                    </tr>
+                    
+                    <!-- Row 10: QuietKat Ranger -->
+                    <tr data-type="ebike">
+                        <td><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&amp;h=280&amp;fit=crop" alt="QuietKat Ranger hunting e-bike" class="bike-img"></td>
+                        <td><strong>QuietKat Ranger</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-ebike">E-Bike</span></td>
+                        <td data-label="Price" class="price">$3,499</td>
+                        <td data-label="Motor">1000W Hub</td>
+                        <td data-label="Range">50 miles</td>
+                        <td data-label="Weight">80 lbs</td>
+                        <td data-label="Top Speed">28 mph</td>
+                        <td data-label="Best For">Hunting, off-road &amp; adventure</td>
                     </tr>
                 </tbody>
             </table>

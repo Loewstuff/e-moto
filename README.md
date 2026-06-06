@@ -14,11 +14,11 @@ A complete, simple, single-page HTML website for comparing popular **e-bikes** a
 5. Check out the "Best Deals & Discount Codes" section at the top.
 
 ### What's included
-- 10 realistic popular models (7 e-bikes + 3 e-dirt bikes)
+- 10 realistic popular models (6 e-bikes + 4 e-dirt bikes)
 - Columns: Picture, Model, Type, Price, Motor, Range, Weight, Top Speed, Best For
 - Live filtering + search (pure JavaScript, no libraries)
 - Nice blue and green color theme
-- Fully mobile-friendly (scroll the table sideways on phones)
+- Fully mobile-friendly (stacks into nice cards on phones)
 - Michigan-specific tip about e-bike laws
 - Footer credits the project to Zack
 
