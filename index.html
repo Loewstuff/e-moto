@@ -230,14 +230,6 @@
             background-color: #f8fafc;
         }
         
-        .bike-img {
-            width: 82px;
-            height: 62px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 2px solid #e5e7eb;
-        }
-        
         .badge {
             display: inline-block;
             padding: 3px 11px;
@@ -327,21 +319,8 @@
                 margin-right: 12px;
             }
             
-            /* Make image + model stand out at the top of each card */
+            /* Make the model (now first td) stand out as the title at the top of each card */
             tbody td:first-child {
-                display: block;
-                text-align: center;
-                margin-bottom: 8px;
-            }
-            
-            tbody td:first-child img {
-                width: 130px;
-                height: 95px;
-                border-radius: 10px;
-                border: 3px solid #0A4D68;
-            }
-            
-            tbody td:nth-child(2) {
                 display: block;
                 text-align: center;
                 font-size: 1.15rem;
@@ -352,13 +331,8 @@
                 border-bottom: 1px solid #f3f4f6;
             }
             
-            tbody td:nth-child(2):before {
+            tbody td:first-child:before {
                 display: none;
-            }
-            
-            /* Hide the label for the model row */
-            tbody td:nth-child(2) {
-                padding-top: 0;
             }
         }
         
@@ -620,7 +594,6 @@
             <table id="compare-table">
                 <thead>
                     <tr>
-                        <th>Picture</th>
                         <th>Model</th>
                         <th>Type</th>
                         <th>Price</th>
@@ -634,7 +607,6 @@
                 <tbody>
                     <!-- E-Bikes -->
                     <tr data-type="ebike">
-                        <td><img src="https://lectricebikes.com/cdn/shop/files/XP4_Black_1.jpg" alt="Lectric XP 4.0 e-bike" class="bike-img"></td>
                         <td><strong>Lectric XP 4.0</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-ebike">E-Bike</span></td>
                         <td data-label="Price" class="price">$1,099</td>
@@ -645,7 +617,6 @@
                         <td data-label="Best For">Commuting &amp; folding</td>
                     </tr>
                     <tr data-type="ebike">
-                        <td><img src="https://aventon.com/cdn/shop/files/Level3_Black_1.jpg" alt="Aventon Level.3 e-bike" class="bike-img"></td>
                         <td><strong>Aventon Level.3</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-ebike">E-Bike</span></td>
                         <td data-label="Price" class="price">$1,899</td>
@@ -656,7 +627,6 @@
                         <td data-label="Best For">Daily commuting</td>
                     </tr>
                     <tr data-type="ebike">
-                        <td><img src="https://aventon.com/cdn/shop/files/Aventure2_1.jpg" alt="Aventon Aventure.2 e-bike" class="bike-img"></td>
                         <td><strong>Aventon Aventure.2</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-ebike">E-Bike</span></td>
                         <td data-label="Price" class="price">$1,999</td>
@@ -667,7 +637,6 @@
                         <td data-label="Best For">Fat tire adventure</td>
                     </tr>
                     <tr data-type="ebike">
-                        <td><img src="https://ride1up.com/cdn/shop/files/RoadsterV3_1.jpg" alt="Ride1Up Roadster V3 e-bike" class="bike-img"></td>
                         <td><strong>Ride1Up Roadster V3</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-ebike">E-Bike</span></td>
                         <td data-label="Price" class="price">$1,295</td>
@@ -678,7 +647,6 @@
                         <td data-label="Best For">Lightweight exercise</td>
                     </tr>
                     <tr data-type="ebike">
-                        <td><img src="https://ride1up.com/cdn/shop/files/Portola_1.jpg" alt="Ride1Up Portola e-bike" class="bike-img"></td>
                         <td><strong>Ride1Up Portola</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-ebike">E-Bike</span></td>
                         <td data-label="Price" class="price">$995</td>
@@ -689,7 +657,6 @@
                         <td data-label="Best For">Folding commuter</td>
                     </tr>
                     <tr data-type="ebike">
-                        <td><img src="https://radpowerbikes.com/cdn/shop/files/RadRover6_1.jpg" alt="RadRover 6 Plus e-bike" class="bike-img"></td>
                         <td><strong>RadRover 6 Plus</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-ebike">E-Bike</span></td>
                         <td data-label="Price" class="price">$1,699</td>
@@ -700,7 +667,6 @@
                         <td data-label="Best For">Trails &amp; adventure</td>
                     </tr>
                     <tr data-type="ebike">
-                        <td><img src="https://radpowerbikes.com/cdn/shop/files/RadRunner_1.jpg" alt="RadRunner e-bike" class="bike-img"></td>
                         <td><strong>RadRunner</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-ebike">E-Bike</span></td>
                         <td data-label="Price" class="price">$1,399</td>
@@ -713,7 +679,6 @@
 
                     <!-- E-Dirt Bikes -->
                     <tr data-type="edirt">
-                        <td><img src="https://surron.com/cdn/shop/files/UltraBee_1.jpg" alt="Surron Ultra Bee e-dirt bike" class="bike-img"></td>
                         <td><strong>Surron Ultra Bee</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$5,499</td>
@@ -724,7 +689,6 @@
                         <td data-label="Best For">Off-road power</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://surron.com/cdn/shop/files/LightBeeX_1.jpg" alt="Surron Light Bee X e-dirt bike" class="bike-img"></td>
                         <td><strong>Surron Light Bee X</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$3,999</td>
@@ -735,7 +699,6 @@
                         <td data-label="Best For">Trail fun</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://surron.com/cdn/shop/files/StormBee_1.jpg" alt="Surron Storm Bee e-dirt bike" class="bike-img"></td>
                         <td><strong>Surron Storm Bee</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$6,999</td>
@@ -746,7 +709,6 @@
                         <td data-label="Best For">Premium off-road</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://talaria.com/cdn/shop/files/StingR_1.jpg" alt="Talaria Sting R e-dirt bike" class="bike-img"></td>
                         <td><strong>Talaria Sting R</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$3,899</td>
@@ -757,7 +719,6 @@
                         <td data-label="Best For">Trail &amp; MX</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://talaria.com/cdn/shop/files/Komodo_1.jpg" alt="Talaria Komodo e-dirt bike" class="bike-img"></td>
                         <td><strong>Talaria Komodo</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$4,499</td>
@@ -768,7 +729,6 @@
                         <td data-label="Best For">Full size dirt</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://talaria.com/cdn/shop/files/MX5_1.jpg" alt="Talaria MX5 e-dirt bike" class="bike-img"></td>
                         <td><strong>Talaria MX5</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$3,699</td>
@@ -779,7 +739,6 @@
                         <td data-label="Best For">MX racing</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://eridepro.com/cdn/shop/files/SS3_1.jpg" alt="E Ride Pro SS 3.0 e-dirt bike" class="bike-img"></td>
                         <td><strong>E Ride Pro SS 3.0</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$3,199</td>
@@ -790,7 +749,6 @@
                         <td data-label="Best For">Value power</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://eridepro.com/cdn/shop/files/SR_1.jpg" alt="E Ride Pro SR e-dirt bike" class="bike-img"></td>
                         <td><strong>E Ride Pro SR</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$3,499</td>
@@ -801,7 +759,6 @@
                         <td data-label="Best For">Street/dirt hybrid</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://segway.com/cdn/shop/files/X260_1.jpg" alt="Segway X260 e-dirt bike" class="bike-img"></td>
                         <td><strong>Segway X260</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$4,299</td>
@@ -812,7 +769,6 @@
                         <td data-label="Best For">Performance trails</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://apollo.com/cdn/shop/files/RFN70_1.jpg" alt="Apollo RFN 70 e-dirt bike" class="bike-img"></td>
                         <td><strong>Apollo RFN 70</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$2,899</td>
@@ -823,7 +779,6 @@
                         <td data-label="Best For">Beginner dirt</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://rawrr.com/cdn/shop/files/MantisX_1.jpg" alt="Rawrr Mantis X e-dirt bike" class="bike-img"></td>
                         <td><strong>Rawrr Mantis X</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$3,799</td>
@@ -834,7 +789,6 @@
                         <td data-label="Best For">Aggressive trails</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://ventus.com/cdn/shop/files/OnePlus_1.jpg" alt="Ventus One Plus e-dirt bike" class="bike-img"></td>
                         <td><strong>Ventus One Plus</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$3,299</td>
@@ -845,7 +799,6 @@
                         <td data-label="Best For">Versatile dirt</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://altis.com/cdn/shop/files/Sigma_1.jpg" alt="Altis Sigma e-dirt bike" class="bike-img"></td>
                         <td><strong>Altis Sigma</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$4,199</td>
@@ -856,7 +809,6 @@
                         <td data-label="Best For">High performance</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://stark.com/cdn/shop/files/Varg_1.jpg" alt="Stark Varg e-dirt bike" class="bike-img"></td>
                         <td><strong>Stark Varg</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$10,999</td>
@@ -867,7 +819,6 @@
                         <td data-label="Best For">Premium racing</td>
                     </tr>
                     <tr data-type="edirt">
-                        <td><img src="https://rfn.com/cdn/shop/files/R1T_1.jpg" alt="R1T e-dirt bike" class="bike-img"></td>
                         <td><strong>R1T (RFN R1T)</strong><br><span class="note">2026</span></td>
                         <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
                         <td data-label="Price" class="price">$2,699</td>
@@ -993,8 +944,8 @@
                 // Only search visible rows (respecting type filter)
                 if (row.style.display === 'none') return;
                 
-                const modelText = row.cells[1].textContent.toLowerCase();
-                const bestForText = row.cells[8].textContent.toLowerCase();
+                const modelText = row.cells[0].textContent.toLowerCase();
+                const bestForText = row.cells[7].textContent.toLowerCase();
                 
                 if (modelText.includes(searchValue) || bestForText.includes(searchValue)) {
                     row.style.display = '';
