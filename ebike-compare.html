@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBike Finder - Compare E-Bikes &amp; E-Dirt Bikes</title>
+    <style>
+        /* Simple, clean styles - all in one file */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f0f7f4;
+            color: #1f2937;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0A4D68, #028090);
+            color: white;
+            padding: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .logo {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        
+        .logo span {
+            color: #02C39A;
+        }
+        
+        .tagline {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            margin-top: 4px;
+        }
+        
+        /* Hero / Intro */
+        .hero {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 16px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 1.65rem;
+            color: #0A4D68;
+            margin-bottom: 10px;
+        }
+        
+        .hero p {
+            font-size: 1.05rem;
+            color: #4b5563;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Section titles */
+        .section-title {
+            font-size: 1.75rem;
+            color: #0A4D68;
+            margin: 30px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: "⚡";
+            font-size: 1.5rem;
+        }
+        
+        /* Deals Section */
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .deal-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #02C39A;
+            transition: transform 0.2s ease;
+        }
+        
+        .deal-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .deal-card h4 {
+            color: #0A4D68;
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+        
+        .deal-card .discount {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #02C39A;
+            margin: 6px 0;
+        }
+        
+        .deal-card .code {
+            background: #f0f7f4;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.95rem;
+            color: #0A4D68;
+            display: inline-block;
+            margin: 4px 0;
+        }
+        
+        .deal-card small {
+            color: #6b7280;
+            font-size: 0.8rem;
+        }
+        
+        /* Filters */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0 10px;
+            align-items: center;
+        }
+        
+        .filter-btn {
+            padding: 8px 18px;
+            border: 2px solid #0A4D68;
+            background: white;
+            color: #0A4D68;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+        
+        .filter-btn:hover {
+            background: #0A4D68;
+            color: white;
+        }
+        
+        .filter-btn.active {
+            background: #0A4D68;
+            color: white;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 220px;
+            max-width: 320px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 10px 16px;
+            border: 2px solid #d1d5db;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .search-box input:focus {
+            border-color: #028090;
+        }
+        
+        /* Comparison Table */
+        .table-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 980px;
+        }
+        
+        th {
+            background: #0A4D68;
+            color: white;
+            padding: 14px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.92rem;
+            white-space: nowrap;
+        }
+        
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: middle;
+        }
+        
+        tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        .bike-img {
+            width: 82px;
+            height: 62px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 11px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-ebike {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .badge-edirt {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: #0A4D68;
+            font-size: 1.05rem;
+        }
+        
+        .note {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0A4D68;
+            color: #e0f2fe;
+            text-align: center;
+            padding: 22px;
+            margin-top: 40px;
+            font-size: 0.95rem;
+        }
+        
+        .footer-text {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 22px 15px;
+            }
+            
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 9px 6px;
+            }
+            
+            .bike-img {
+                width: 68px;
+                height: 52px;
+            }
+        }
+        
+        .tip-box {
+            background: #e0f2fe;
+            border-left: 5px solid #028090;
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <div class="logo">EBike Finder<span>⚡</span></div>
+                    <div class="tagline">Compare E-Bikes &amp; E-Dirt Bikes • Simple &amp; Fun</div>
+                </div>
+                <div style="text-align: right; font-size: 0.95rem; opacity: 0.9;">
+                    Made for school projects<br>
+                    <strong>8th Grade • Michigan</strong>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- HERO / INTRO -->
+        <div class="hero">
+            <h2>Welcome to EBike Finder! 🚲</h2>
+            <p>
+                This website helps you compare popular electric bikes and electric dirt bikes (e-motos). 
+                Use the filters and search to find the perfect ride for commuting, trails, or adventure. 
+                All info is realistic for the US market.
+            </p>
+        </div>
+
+        <!-- DEALS SECTION -->
+        <h2 class="section-title">🔥 Best Deals &amp; Discount Codes</h2>
+        <p style="margin-bottom: 12px; color: #4b5563; font-size: 0.95rem;">
+            These are popular current deals (as of 2026). Always double-check the official websites because codes change!
+        </p>
+        
+        <div class="deals-grid">
+            <!-- Deal 1 -->
+            <div class="deal-card">
+                <h4>Lectric XP4</h4>
+                <div class="discount">$100 off + free accessories</div>
+                <div><span class="code">XP4SAVE</span></div>
+                <small>Use at lectricebikes.com • Great for beginners</small>
+            </div>
+            
+            <!-- Deal 2 -->
+            <div class="deal-card">
+                <h4>Ride1Up Roadster V3</h4>
+                <div class="discount">Free shipping + $75 off</div>
+                <div><span class="code">ROAD75</span></div>
+                <small>Use at ride1up.com • Lightweight favorite</small>
+            </div>
+            
+            <!-- Deal 3 -->
+            <div class="deal-card">
+                <h4>Aventon Level 3</h4>
+                <div class="discount">10% off + free rack</div>
+                <div><span class="code">AVENTON10</span></div>
+                <small>Use at aventon.com • Excellent daily rider</small>
+            </div>
+            
+            <!-- Deal 4 -->
+            <div class="deal-card">
+                <h4>E Ride Pro SS 3.0</h4>
+                <div class="discount">$200 off + free helmet</div>
+                <div><span class="code">ERIDE200</span></div>
+                <small>Check revrides.com or eridepro dealers</small>
+            </div>
+            
+            <!-- Deal 5 -->
+            <div class="deal-card">
+                <h4>Talaria Sting MX5</h4>
+                <div class="discount">Free shipping bundle</div>
+                <div><span class="code">TALARIAFUN</span></div>
+                <small>Available at many e-moto shops</small>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <strong>💡 Michigan Tip:</strong> E-bikes (Class 1, 2, and 3) are allowed on many bike paths. 
+            E-dirt bikes are usually for private property or off-road trails only. Always wear a helmet!
+        </div>
+
+        <!-- COMPARISON TABLE SECTION -->
+        <h2 class="section-title">📊 Comparison Table</h2>
+        
+        <!-- Filters -->
+        <div class="filters">
+            <button onclick="filterByType('all')" class="filter-btn active" id="btn-all">Show All (10)</button>
+            <button onclick="filterByType('ebike')" class="filter-btn" id="btn-ebike">🚲 E-Bikes Only</button>
+            <button onclick="filterByType('edirt')" class="filter-btn" id="btn-edirt">🏍️ E-Dirt Bikes Only</button>
+            
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search models or 'best for'..." onkeyup="filterTable()">
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="compare-table">
+                <thead>
+                    <tr>
+                        <th>Picture</th>
+                        <th>Model</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Motor</th>
+                        <th>Range</th>
+                        <th>Weight</th>
+                        <th>Top Speed</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Row 1: Lectric XP4 -->
+                    <tr data-type="ebike">
+                        <td><img src="https://picsum.photos/id/1015/82/62" alt="Lectric XP4 folding e-bike" class="bike-img"></td>
+                        <td><strong>Lectric XP4</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-ebike">E-Bike</span></td>
+                        <td class="price">$999</td>
+                        <td>500W Hub<br><span class="note">(750W peak)</span></td>
+                        <td>65 miles</td>
+                        <td>61 lbs</td>
+                        <td>28 mph</td>
+                        <td>Commuting, travel, beginners</td>
+                    </tr>
+                    
+                    <!-- Row 2: Aventon Level 3 -->
+                    <tr data-type="ebike">
+                        <td><img src="https://picsum.photos/id/160/82/62" alt="Aventon Level 3 e-bike" class="bike-img"></td>
+                        <td><strong>Aventon Level 3</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-ebike">E-Bike</span></td>
+                        <td class="price">$1,899</td>
+                        <td>500W Hub</td>
+                        <td>45 miles</td>
+                        <td>67 lbs</td>
+                        <td>28 mph</td>
+                        <td>Daily commuting, city riding</td>
+                    </tr>
+                    
+                    <!-- Row 3: RadRover -->
+                    <tr data-type="ebike">
+                        <td><img src="https://picsum.photos/id/201/82/62" alt="Rad Power RadRover fat tire e-bike" class="bike-img"></td>
+                        <td><strong>Rad Power RadRover 6</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-ebike">E-Bike</span></td>
+                        <td class="price">$1,699</td>
+                        <td>750W Hub</td>
+                        <td>45 miles</td>
+                        <td>73 lbs</td>
+                        <td>25 mph</td>
+                        <td>Trails, snow, sand, adventure</td>
+                    </tr>
+                    
+                    <!-- Row 4: Ride1Up Roadster -->
+                    <tr data-type="ebike">
+                        <td><img src="https://picsum.photos/id/29/82/62" alt="Ride1Up Roadster lightweight e-bike" class="bike-img"></td>
+                        <td><strong>Ride1Up Roadster V3</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-ebike">E-Bike</span></td>
+                        <td class="price">$1,295</td>
+                        <td>500W Hub</td>
+                        <td>40 miles</td>
+                        <td>44 lbs</td>
+                        <td>28 mph</td>
+                        <td>Lightweight commuting &amp; fitness</td>
+                    </tr>
+                    
+                    <!-- Row 5: Velotric Discover -->
+                    <tr data-type="ebike">
+                        <td><img src="https://picsum.photos/id/251/82/62" alt="Velotric Discover commuter e-bike" class="bike-img"></td>
+                        <td><strong>Velotric Discover 2</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-ebike">E-Bike</span></td>
+                        <td class="price">$1,799</td>
+                        <td>750W Hub</td>
+                        <td>55 miles</td>
+                        <td>63 lbs</td>
+                        <td>28 mph</td>
+                        <td>Errands &amp; comfortable commuting</td>
+                    </tr>
+                    
+                    <!-- Row 6: Aventon Aventure -->
+                    <tr data-type="ebike">
+                        <td><img src="https://picsum.photos/id/1005/82/62" alt="Aventon Aventure fat tire adventure e-bike" class="bike-img"></td>
+                        <td><strong>Aventon Aventure 3</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-ebike">E-Bike</span></td>
+                        <td class="price">$1,999</td>
+                        <td>750W Hub</td>
+                        <td>45 miles</td>
+                        <td>78 lbs</td>
+                        <td>28 mph</td>
+                        <td>Gravel, trails &amp; all-terrain</td>
+                    </tr>
+                    
+                    <!-- Row 7: Lectric Xpedition (Cargo) -->
+                    <tr data-type="ebike">
+                        <td><img src="https://picsum.photos/id/1036/82/62" alt="Lectric Xpedition cargo e-bike" class="bike-img"></td>
+                        <td><strong>Lectric Xpedition 2</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-ebike">E-Bike</span></td>
+                        <td class="price">$1,999</td>
+                        <td>750W Hub</td>
+                        <td>80 miles</td>
+                        <td>85 lbs</td>
+                        <td>28 mph</td>
+                        <td>Cargo, kids, groceries, family</td>
+                    </tr>
+                    
+                    <!-- Row 8: Surron Light Bee -->
+                    <tr data-type="edirt">
+                        <td><img src="https://picsum.photos/id/1040/82/62" alt="Surron Light Bee X electric dirt bike" class="bike-img"></td>
+                        <td><strong>Surron Light Bee X</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
+                        <td class="price">$4,299</td>
+                        <td>High-power<br><span class="note">(~5kW)</span></td>
+                        <td>50 miles</td>
+                        <td>120 lbs</td>
+                        <td>45 mph*</td>
+                        <td>Trail riding &amp; off-road fun</td>
+                    </tr>
+                    
+                    <!-- Row 9: Talaria Sting -->
+                    <tr data-type="edirt">
+                        <td><img src="https://picsum.photos/id/106/82/62" alt="Talaria Sting MX5 electric dirt bike" class="bike-img"></td>
+                        <td><strong>Talaria Sting MX5</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
+                        <td class="price">$3,799</td>
+                        <td>72V High-Torque</td>
+                        <td>45 miles</td>
+                        <td>125 lbs</td>
+                        <td>50 mph*</td>
+                        <td>MX trails, enduro, jumps</td>
+                    </tr>
+                    
+                    <!-- Row 10: E Ride Pro -->
+                    <tr data-type="edirt">
+                        <td><img src="https://picsum.photos/id/30/82/62" alt="E Ride Pro SS 3.0 electric dirt bike" class="bike-img"></td>
+                        <td><strong>E Ride Pro SS 3.0</strong><br><span class="note">2025</span></td>
+                        <td><span class="badge badge-edirt">E-Dirt Bike</span></td>
+                        <td class="price">$3,199</td>
+                        <td>72V 15kW Peak</td>
+                        <td>60 miles</td>
+                        <td>165 lbs</td>
+                        <td>55 mph*</td>
+                        <td>Powerful dirt biking &amp; versatility</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="note" style="margin-top: -10px; margin-bottom: 25px;">
+            * Top speeds over 28 mph on E-Dirt Bikes are for off-road use only. Check your local laws!
+        </p>
+
+        <!-- Extra simple tips -->
+        <div class="tip-box">
+            <strong>How to choose:</strong> 
+            E-Bikes are perfect for commuting, exercise, and paved paths. 
+            E-Dirt Bikes (also called e-motos) are built for off-road trails and are much more powerful. 
+            Think about how much you want to spend, how far you ride, and whether you'll stay on roads or go on dirt!
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-text">
+                Made for <strong>Zack</strong> in 8th grade • Michigan • 2026<br>
+                This is a school project. All prices and specs are realistic estimates based on popular models. 
+                Always verify current prices and rules before buying!
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Very simple JavaScript - beginner friendly!
+        
+        // Filter by type (E-Bike or E-Dirt Bike)
+        function filterByType(type) {
+            const rows = document.querySelectorAll('#compare-table tbody tr');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Reset all button styles
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Highlight the clicked button
+            if (type === 'all') {
+                document.getElementById('btn-all').classList.add('active');
+            } else if (type === 'ebike') {
+                document.getElementById('btn-ebike').classList.add('active');
+            } else if (type === 'edirt') {
+                document.getElementById('btn-edirt').classList.add('active');
+            }
+            
+            // Show or hide rows
+            rows.forEach(row => {
+                if (type === 'all') {
+                    row.style.display = '';
+                } else {
+                    if (row.getAttribute('data-type') === type) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+        }
+        
+        // Search filter - looks in Model and Best For columns
+        function filterTable() {
+            const searchValue = document.getElementById('search-input').value.toLowerCase();
+            const rows = document.querySelectorAll('#compare-table tbody tr');
+            
+            rows.forEach(row => {
+                // Only search visible rows (respecting type filter)
+                if (row.style.display === 'none') return;
+                
+                const modelText = row.cells[1].textContent.toLowerCase();
+                const bestForText = row.cells[8].textContent.toLowerCase();
+                
+                if (modelText.includes(searchValue) || bestForText.includes(searchValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        
+        // Optional: Make table rows clickable to highlight (fun extra)
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('#compare-table tbody tr');
+            
+            rows.forEach(row => {
+                row.addEventListener('click', function() {
+                    // Remove highlight from all rows
+                    rows.forEach(r => r.style.backgroundColor = '');
+                    
+                    // Highlight this row
+                    this.style.backgroundColor = '#e0f2fe';
+                    
+                    // Remove highlight after 1.5 seconds
+                    setTimeout(() => {
+                        this.style.backgroundColor = '';
+                    }, 1500);
+                });
+            });
+            
+            // Start with "Show All" active
+            document.getElementById('btn-all').classList.add('active');
+            
+            // Fun tip: Press "/" to focus search (like many websites)
+            document.addEventListener('keydown', function(e) {
+                if (e.key === '/' && document.activeElement.tagName === 'BODY') {
+                    e.preventDefault();
+                    document.getElementById('search-input').focus();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
