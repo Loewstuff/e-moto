@@ -462,6 +462,12 @@
             margin-bottom: 8px;
             line-height: 1.4;
         }
+
+        .compare-check {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -590,6 +596,12 @@
             </div>
         </div>
 
+        <!-- Compare Bar -->
+        <div id="compare-bar" style="display:none; margin: 15px 0; text-align: center;">
+            <button onclick="showCompareModal()" class="quiz-button">Compare Selected Bikes (<span id="selected-count">0</span>)</button>
+            <button onclick="clearSelection()" style="margin-left:10px; background:#6b7280; color:white; border:none; padding:10px 15px; border-radius:30px; cursor:pointer;">Clear Selection</button>
+        </div>
+
         <div class="table-container">
             <table id="compare-table">
                 <thead>
@@ -602,6 +614,7 @@
                         <th>Weight</th>
                         <th>Top Speed</th>
                         <th>Best For</th>
+                        <th>Compare</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -615,6 +628,7 @@
                         <td data-label="Weight">62 lbs</td>
                         <td data-label="Top Speed">28 mph</td>
                         <td data-label="Best For">Commuting &amp; folding</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="ebike">
                         <td><strong>Aventon Level.3</strong><br><span class="note">2026</span></td>
@@ -625,6 +639,7 @@
                         <td data-label="Weight">67 lbs</td>
                         <td data-label="Top Speed">28 mph</td>
                         <td data-label="Best For">Daily commuting</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="ebike">
                         <td><strong>Aventon Aventure.2</strong><br><span class="note">2026</span></td>
@@ -635,6 +650,7 @@
                         <td data-label="Weight">78 lbs</td>
                         <td data-label="Top Speed">28 mph</td>
                         <td data-label="Best For">Fat tire adventure</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="ebike">
                         <td><strong>Ride1Up Roadster V3</strong><br><span class="note">2026</span></td>
@@ -645,6 +661,7 @@
                         <td data-label="Weight">44 lbs</td>
                         <td data-label="Top Speed">28 mph</td>
                         <td data-label="Best For">Lightweight exercise</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="ebike">
                         <td><strong>Ride1Up Portola</strong><br><span class="note">2026</span></td>
@@ -655,6 +672,7 @@
                         <td data-label="Weight">38 lbs</td>
                         <td data-label="Top Speed">28 mph</td>
                         <td data-label="Best For">Folding commuter</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="ebike">
                         <td><strong>RadRover 6 Plus</strong><br><span class="note">2026</span></td>
@@ -665,6 +683,7 @@
                         <td data-label="Weight">73 lbs</td>
                         <td data-label="Top Speed">25 mph</td>
                         <td data-label="Best For">Trails &amp; adventure</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="ebike">
                         <td><strong>RadRunner</strong><br><span class="note">2026</span></td>
@@ -675,6 +694,7 @@
                         <td data-label="Weight">65 lbs</td>
                         <td data-label="Top Speed">25 mph</td>
                         <td data-label="Best For">Utility &amp; family</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
 
                     <!-- New Budget E-Bikes -->
@@ -687,6 +707,7 @@
                         <td data-label="Weight">52 lbs</td>
                         <td data-label="Top Speed">20 mph</td>
                         <td data-label="Best For">City commuting</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="ebike">
                         <td><strong>Engwe EP-2 Pro</strong><br><span class="note">2026</span></td>
@@ -697,6 +718,7 @@
                         <td data-label="Weight">65 lbs</td>
                         <td data-label="Top Speed">25 mph</td>
                         <td data-label="Best For">Folding</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="ebike">
                         <td><strong>Gotrax GXL V2</strong><br><span class="note">2026</span></td>
@@ -707,6 +729,7 @@
                         <td data-label="Weight">42 lbs</td>
                         <td data-label="Top Speed">15.5 mph</td>
                         <td data-label="Best For">Entry commuter</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="ebike">
                         <td><strong>Heybike Tyson</strong><br><span class="note">2026</span></td>
@@ -717,6 +740,7 @@
                         <td data-label="Weight">48 lbs</td>
                         <td data-label="Top Speed">20 mph</td>
                         <td data-label="Best For">Cruiser</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="ebike">
                         <td><strong>Bezior X1500</strong><br><span class="note">2026</span></td>
@@ -727,6 +751,7 @@
                         <td data-label="Weight">70 lbs</td>
                         <td data-label="Top Speed">28 mph</td>
                         <td data-label="Best For">Budget fat tire</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="ebike">
                         <td><strong>Hiboy S2</strong><br><span class="note">2026</span></td>
@@ -737,6 +762,7 @@
                         <td data-label="Weight">55 lbs</td>
                         <td data-label="Top Speed">20 mph</td>
                         <td data-label="Best For">Budget commuter</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
 
                     <!-- E-Dirt Bikes -->
@@ -749,6 +775,7 @@
                         <td data-label="Weight">135 lbs</td>
                         <td data-label="Top Speed">50 mph*</td>
                         <td data-label="Best For">Off-road power</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Surron Light Bee X</strong><br><span class="note">2026</span></td>
@@ -759,6 +786,7 @@
                         <td data-label="Weight">115 lbs</td>
                         <td data-label="Top Speed">45 mph*</td>
                         <td data-label="Best For">Trail fun</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Surron Storm Bee</strong><br><span class="note">2026</span></td>
@@ -769,6 +797,7 @@
                         <td data-label="Weight">145 lbs</td>
                         <td data-label="Top Speed">60 mph*</td>
                         <td data-label="Best For">Premium off-road</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Talaria Sting R</strong><br><span class="note">2026</span></td>
@@ -779,6 +808,7 @@
                         <td data-label="Weight">125 lbs</td>
                         <td data-label="Top Speed">50 mph*</td>
                         <td data-label="Best For">Trail &amp; MX</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Talaria Komodo</strong><br><span class="note">2026</span></td>
@@ -789,6 +819,7 @@
                         <td data-label="Weight">140 lbs</td>
                         <td data-label="Top Speed">55 mph*</td>
                         <td data-label="Best For">Full size dirt</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Talaria MX5</strong><br><span class="note">2026</span></td>
@@ -799,6 +830,7 @@
                         <td data-label="Weight">120 lbs</td>
                         <td data-label="Top Speed">48 mph*</td>
                         <td data-label="Best For">MX racing</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>E Ride Pro SS 3.0</strong><br><span class="note">2026</span></td>
@@ -809,6 +841,7 @@
                         <td data-label="Weight">165 lbs</td>
                         <td data-label="Top Speed">55 mph*</td>
                         <td data-label="Best For">Value power</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>E Ride Pro SR</strong><br><span class="note">2026</span></td>
@@ -819,6 +852,7 @@
                         <td data-label="Weight">155 lbs</td>
                         <td data-label="Top Speed">52 mph*</td>
                         <td data-label="Best For">Street/dirt hybrid</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Segway X260</strong><br><span class="note">2026</span></td>
@@ -829,6 +863,7 @@
                         <td data-label="Weight">138 lbs</td>
                         <td data-label="Top Speed">48 mph*</td>
                         <td data-label="Best For">Performance trails</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Apollo RFN 70</strong><br><span class="note">2026</span></td>
@@ -839,6 +874,7 @@
                         <td data-label="Weight">110 lbs</td>
                         <td data-label="Top Speed">40 mph*</td>
                         <td data-label="Best For">Beginner dirt</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Rawrr Mantis X</strong><br><span class="note">2026</span></td>
@@ -849,6 +885,7 @@
                         <td data-label="Weight">130 lbs</td>
                         <td data-label="Top Speed">50 mph*</td>
                         <td data-label="Best For">Aggressive trails</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Ventus One Plus</strong><br><span class="note">2026</span></td>
@@ -859,6 +896,7 @@
                         <td data-label="Weight">125 lbs</td>
                         <td data-label="Top Speed">52 mph*</td>
                         <td data-label="Best For">Versatile dirt</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Altis Sigma</strong><br><span class="note">2026</span></td>
@@ -869,6 +907,7 @@
                         <td data-label="Weight">135 lbs</td>
                         <td data-label="Top Speed">55 mph*</td>
                         <td data-label="Best For">High performance</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Stark Varg</strong><br><span class="note">2026</span></td>
@@ -879,6 +918,7 @@
                         <td data-label="Weight">128 lbs</td>
                         <td data-label="Top Speed">70 mph*</td>
                         <td data-label="Best For">Premium racing</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>R1T (RFN R1T)</strong><br><span class="note">2026</span></td>
@@ -889,6 +929,7 @@
                         <td data-label="Weight">105 lbs</td>
                         <td data-label="Top Speed">38 mph*</td>
                         <td data-label="Best For">Entry level dirt</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
 
                     <!-- New Budget E-Dirt Bikes -->
@@ -901,6 +942,7 @@
                         <td data-label="Weight">95 lbs</td>
                         <td data-label="Top Speed">32 mph*</td>
                         <td data-label="Best For">Beginner e-moto</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>EBOX 3.0</strong><br><span class="note">2026</span></td>
@@ -911,6 +953,7 @@
                         <td data-label="Weight">88 lbs</td>
                         <td data-label="Top Speed">30 mph*</td>
                         <td data-label="Best For">Affordable dirt</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Leonx L1</strong><br><span class="note">2026</span></td>
@@ -921,6 +964,7 @@
                         <td data-label="Weight">100 lbs</td>
                         <td data-label="Top Speed">35 mph*</td>
                         <td data-label="Best For">Entry level dirt</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Yozma Y1</strong><br><span class="note">2026</span></td>
@@ -931,6 +975,7 @@
                         <td data-label="Weight">105 lbs</td>
                         <td data-label="Top Speed">38 mph*</td>
                         <td data-label="Best For">Value trail</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Sengso S2</strong><br><span class="note">2026</span></td>
@@ -941,6 +986,7 @@
                         <td data-label="Weight">115 lbs</td>
                         <td data-label="Top Speed">42 mph*</td>
                         <td data-label="Best For">Budget high power</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                     <tr data-type="edirt">
                         <td><strong>Tuttio Titan</strong><br><span class="note">2026</span></td>
@@ -951,6 +997,7 @@
                         <td data-label="Weight">120 lbs</td>
                         <td data-label="Top Speed">40 mph*</td>
                         <td data-label="Best For">Popular budget e-moto</td>
+                        <td><input type="checkbox" class="compare-check" onchange="handleCompareCheck(this)"></td>
                     </tr>
                 </tbody>
             </table>
@@ -1014,6 +1061,18 @@
         </div>
     </div>
 
+    <!-- COMPARE MODAL -->
+    <div id="compare-modal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <h2 style="color: #0A4D68; text-align: center;">Side-by-Side Comparison</h2>
+            <div id="compare-content" style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;"></div>
+            <div style="margin-top: 20px; text-align: center;">
+                <button onclick="closeCompareModal()" style="background: #6b7280; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer;">Close</button>
+                <button onclick="clearSelectionAndClose()" style="background: #028090; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; margin-left: 10px;">Clear &amp; Close</button>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer>
         <div class="container">
@@ -1057,6 +1116,7 @@
                     }
                 }
             });
+            updateCompareUI();
         }
         
         // Search filter - looks in Model and Best For columns
@@ -1077,6 +1137,90 @@
                     row.style.display = 'none';
                 }
             });
+            updateCompareUI();
+        }
+        
+        // Compare feature
+        let maxCompare = 3;
+        
+        function handleCompareCheck(checkbox) {
+            const checkedCount = document.querySelectorAll('.compare-check:checked').length;
+            if (checkedCount > maxCompare) {
+                checkbox.checked = false;
+                alert('You can select up to 3 bikes to compare.');
+            }
+            updateCompareUI();
+        }
+        
+        function updateCompareUI() {
+            const checked = document.querySelectorAll('.compare-check:checked').length;
+            const bar = document.getElementById('compare-bar');
+            const countSpan = document.getElementById('selected-count');
+            if (countSpan) countSpan.textContent = checked;
+            if (checked > 0) {
+                bar.style.display = 'block';
+            } else {
+                bar.style.display = 'none';
+            }
+        }
+        
+        function showCompareModal() {
+            const checkedBoxes = document.querySelectorAll('.compare-check:checked');
+            if (checkedBoxes.length === 0) return;
+            
+            const modal = document.getElementById('compare-modal');
+            const content = document.getElementById('compare-content');
+            content.innerHTML = '';
+            
+            const flexContainer = document.createElement('div');
+            flexContainer.style.display = 'flex';
+            flexContainer.style.gap = '15px';
+            flexContainer.style.flexWrap = 'wrap';
+            flexContainer.style.justifyContent = 'center';
+            
+            checkedBoxes.forEach((box) => {
+                const tr = box.closest('tr');
+                const tds = tr.querySelectorAll('td');
+                
+                const card = document.createElement('div');
+                card.style.flex = '1';
+                card.style.minWidth = '220px';
+                card.style.maxWidth = '300px';
+                card.style.border = '2px solid #0A4D68';
+                card.style.borderRadius = '12px';
+                card.style.padding = '12px';
+                card.style.background = '#fff';
+                card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                
+                card.innerHTML = `
+                    <h3 style="color: #0A4D68; margin: 0 0 8px; font-size: 1.1rem; border-bottom: 1px solid #02C39A; padding-bottom: 4px;">${tds[0].innerText}</h3>
+                    <p style="margin: 4px 0;"><strong>Type:</strong> ${tds[1].innerText}</p>
+                    <p style="margin: 4px 0;"><strong>Price:</strong> ${tds[2].innerText}</p>
+                    <p style="margin: 4px 0;"><strong>Motor:</strong> ${tds[3].innerText}</p>
+                    <p style="margin: 4px 0;"><strong>Range:</strong> ${tds[4].innerText}</p>
+                    <p style="margin: 4px 0;"><strong>Weight:</strong> ${tds[5].innerText}</p>
+                    <p style="margin: 4px 0;"><strong>Top Speed:</strong> ${tds[6].innerText}</p>
+                    <p style="margin: 4px 0;"><strong>Best For:</strong> ${tds[7].innerText}</p>
+                `;
+                flexContainer.appendChild(card);
+            });
+            
+            content.appendChild(flexContainer);
+            modal.style.display = 'flex';
+        }
+        
+        function closeCompareModal() {
+            document.getElementById('compare-modal').style.display = 'none';
+        }
+        
+        function clearSelection() {
+            document.querySelectorAll('.compare-check:checked').forEach(cb => cb.checked = false);
+            updateCompareUI();
+            closeCompareModal();
+        }
+        
+        function clearSelectionAndClose() {
+            clearSelection();
         }
         
         // Quiz Modal Functions
@@ -1176,14 +1320,11 @@
             const rows = document.querySelectorAll('#compare-table tbody tr');
             
             rows.forEach(row => {
-                row.addEventListener('click', function() {
-                    // Remove highlight from all rows
+                row.addEventListener('click', function(e) {
+                    // Don't highlight if clicking checkbox
+                    if (e.target.type === 'checkbox') return;
                     rows.forEach(r => r.style.backgroundColor = '');
-                    
-                    // Highlight this row
                     this.style.backgroundColor = '#e0f2fe';
-                    
-                    // Remove highlight after 1.5 seconds
                     setTimeout(() => {
                         this.style.backgroundColor = '';
                     }, 1500);
@@ -1193,7 +1334,7 @@
             // Start with "Show All" active
             document.getElementById('btn-all').classList.add('active');
             
-            // Fun tip: Press "/" to focus search (like many websites)
+            // Fun tip: Press "/" to focus search
             document.addEventListener('keydown', function(e) {
                 if (e.key === '/' && document.activeElement.tagName === 'BODY') {
                     e.preventDefault();
@@ -1201,13 +1342,23 @@
                 }
             });
             
-            // Make modal close when clicking outside content
-            const modal = document.getElementById('quiz-modal');
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
+            // Make modals close when clicking outside content
+            const quizModal = document.getElementById('quiz-modal');
+            quizModal.addEventListener('click', function(e) {
+                if (e.target === quizModal) {
                     closeQuizModal();
                 }
             });
+            
+            const compareModal = document.getElementById('compare-modal');
+            compareModal.addEventListener('click', function(e) {
+                if (e.target === compareModal) {
+                    closeCompareModal();
+                }
+            });
+            
+            // Initial UI
+            updateCompareUI();
         });
     </script>
 </body>
