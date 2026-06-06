@@ -7,7 +7,7 @@
 A complete, simple, single-page HTML website for comparing popular **e-bikes** and **e-dirt bikes (e-motos)**.
 
 ### How to use
-1. Open `ebike-compare.html` in any web browser (double-click the file or drag it into Chrome/Firefox/Edge).
+1. Open `index.html` in any web browser (double-click the file or drag it into Chrome/Firefox/Edge).
 2. Use the buttons to filter between E-Bikes and E-Dirt Bikes.
 3. Type in the search box to quickly find models.
 4. Click rows in the table to highlight them.
@@ -23,7 +23,7 @@ A complete, simple, single-page HTML website for comparing popular **e-bikes** a
 - Footer credits the project to Zack
 
 ### Files
-- `ebike-compare.html` — The complete standalone webpage (everything in one file)
+- `index.html` — The complete standalone webpage (everything in one file)
 - `README.md` — This file
 
 ### Tech
